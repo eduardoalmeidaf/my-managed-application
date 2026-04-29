@@ -1,0 +1,27 @@
+{
+    "$schema": " https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json# ",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2021-07-01",
+            "name": "[parameters('vmName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                // Propriedades da VM
+            }
+        }
+        // Outros recursos
+    ],
+    "parameters": {
+        "vmName": {
+            "type": "string",
+            "defaultValue": "MinhaVM"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+        // Outros parâmetros se necessário
+    }
+}
