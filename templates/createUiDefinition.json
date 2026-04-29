@@ -1,0 +1,43 @@
+{
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "1.0.0",
+  "parameters": {
+    "basics": [
+      {
+        "name": "subscriptionName",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Nome da Subscription",
+        "constraints": { "required": true }
+      },
+      {
+        "name": "environment",
+        "type": "Microsoft.Common.DropDown",
+        "label": "Ambiente",
+        "defaultValue": "Dev",
+        "constraints": {
+          "allowedValues": [
+            { "label": "Dev", "value": "Dev" },
+            { "label": "Hml", "value": "Hml" },
+            { "label": "Prod", "value": "Prod" }
+          ]
+        }
+      },
+      {
+        "name": "costCenter",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Centro de Custo"
+      },
+      {
+        "name": "ownerEmail",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Email do Owner"
+      }
+    ],
+    "outputs": {
+      "subscriptionName": "[basics('subscriptionName')]",
+      "environment": "[basics('environment')]",
+      "costCenter": "[basics('costCenter')]",
+      "ownerEmail": "[basics('ownerEmail')]"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "type": "Microsoft.Solutions/managedApplicationDefinitions",
+  "apiVersion": "2020-10-01",
+  "location": "East US", // Substitua pela sua região
+  "properties": {
+    "displayName": "Criar Assinatura Personalizada",
+    "description": "Este item do catálogo cria uma nova assinatura personalizada.",
+    "packageFileUri": "<url-do-seu-arquivo-json-do-modelo>", // URL onde o modelo ARM é acessível
+    "managedResourceGroupId": "[parameters('managedResourceGroupId')]",
+    "parameters": {
+      "subscriptionName": {
+            "type": "string",
+            "metadata": {
+                "description": "Nome da nova assinatura. Deve começar com 'sub-'."
+            },
+            "allowedPattern": "^sub-.$",
+            "defaultValue": "sub-NovaAssinatura"
+        },   
+      "customerId": {
+        "type": "string",
+        "defaultValue": "<customer-id>"
+      },
+      "managedResourceGroupId": {
+        "type": "string",
+        "defaultValue": "mg-evertecbrasil" // Valor padrão caso tenha um
+      },
+      "tags": {
+        "type": "object",
+        "defaultValue": {
+          "BU": "Default Business Unit",
+          "RBU": "Default Regional Business Unit",
+          "RFIN": "Default Regional Finance"
+        }
+      }
+    },
+    "template": {
+      "$schema": " https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json# ",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "subscriptionName": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "managedResourceGroupId": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "object"
+        }
+      },
+      "resources": [],
+      "outputs": {}
+    },
+    "sku": {
+      "name": "standard",
+      "tier": "Standard"
+    }
+  }
+}

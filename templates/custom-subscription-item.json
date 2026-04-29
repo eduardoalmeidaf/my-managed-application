@@ -1,0 +1,40 @@
+{
+  "type": "Microsoft.Solutions/managedApplicationDefinitions",
+  "apiVersion": "2020-10-01",
+  "location": "East US2", // Substitua pela sua região
+  "properties": {
+    "displayName": "Criar Assinatura (Corporativa)",
+    "description": "Este item do catálogo cria uma nova assinatura corporativa nos padrões da Evertec Brasil",
+    "packageFileUri": "<url-do-seu-arquivo-json-do-modelo>", // URL onde o modelo ARM é acessível
+    "managedResourceGroupId": "<resource-group-id>", // ID do grupo de recursos gerenciado
+    "policyDefinitionId": "<policy-id>", // Caso haja alguma política associada
+    "parameters": {
+      "subscriptionName": {
+        "type": "string",
+        "defaultValue": "Nova Assinatura"
+      },
+      "customerId": {
+        "type": "string",
+        "defaultValue": "<customer-id>"
+      }
+    },
+    "template": {
+      "$schema": " https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json# ",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "subscriptionName": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        }
+      },
+      "resources": [],
+      "outputs": {}
+    }
+  },
+  "sku": {
+    "name": "standard",
+    "tier": "Standard"
+  }
+}

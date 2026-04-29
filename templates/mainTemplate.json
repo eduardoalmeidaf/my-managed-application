@@ -1,0 +1,25 @@
+
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "parameters": {
+    "subscriptionName": { "type": "string" },
+    "environment": { "type": "string" },
+    "costCenter": { "type": "string" },
+    "ownerEmail": { "type": "string" }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Automation/automationAccounts/runbooks",
+      "apiVersion": "2023-11-01",
+      "name": "aa-subscription-catalog/Create-Subscription",
+      "properties": {
+        "parameters": {
+          "SubscriptionName": { "value": "[parameters('subscriptionName')]" },
+          "Environment": { "value": "[parameters('environment')]" },
+          "CostCenter": { "value": "[parameters('costCenter')]" },
+          "OwnerEmail": { "value": "[parameters('ownerEmail')]" }
+        }
+      }
+    }
+  ]
+}
